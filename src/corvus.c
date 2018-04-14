@@ -482,6 +482,11 @@ int main(int argc, const char *argv[])
     // create first slot updating job
     slot_create_job(SLOT_UPDATE);
 
+    if (socket_bind_test("0.0.0.0", config.bind) == -1) {
+        LOG(ERROR, "Fatal: Address already in use.");
+        exit(EXIT_FAILURE);
+    }
+
     // start worker threads
     for (i = 0; i < config.thread; i++) {
         if (thread_spawn(&contexts[i], main_loop) == CORVUS_ERR) {

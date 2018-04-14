@@ -33,5 +33,6 @@ int socket_parse_addr(char *addr, struct address *address);
 int socket_parse_ip(char *addr, struct address *address);
 int socket_create_eventfd();
 int socket_trigger_event(int evfd);
+int socket_bind_test(const char *addr, int port);
 
 #endif /* end of include guard: SOCKET_H */
